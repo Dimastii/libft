@@ -6,11 +6,12 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 15:03:43 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/30 11:24:54 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/10/30 12:24:34 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
 
 int main() {
@@ -134,14 +135,21 @@ int main() {
 	printf("\n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
 	char *largestring = "Foo Bar Baz";
-	char *smallstring = "Bar";
-	char *ptr;
+	char *smallstring = "Bar\0";
 
-	printf("\nStandar %s\n",strnstr(largestring, smallstring, 7));
-	printf("\n ft_strnstr %s", ft_strnstr(largestring, smallstring, 7));
+	printf("\n    strnstr %s\n",strnstr(largestring, smallstring, 1));
+	printf("\n ft_strnstr %s", ft_strnstr(largestring, smallstring, 1));
 	printf("\n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
 
+
+	printf("\n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+
+	char *n = "    -12 345we";
+	char *nn = "-12 345we";
+
+	printf("\natoi %d\n", atoi(n));
+	printf("\nft_atoi %d\n", ft_atoi(nn));
 
 
 	return 0;
