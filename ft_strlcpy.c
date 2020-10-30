@@ -6,7 +6,7 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 23:08:44 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/29 12:45:45 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:27:12 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	sr = src;
 	len = ft_strlen(src);
-	while (dstsize - 1)
+	if(dst == NULL || src == NULL)
+		return (0);
+	if (dstsize == 0)
+		return (len);
+	while (--dstsize && *sr)
 	{
-		*dst++ = *sr++;
-		dstsize--;
+		*(dst++) = *(sr++);
 	}
 	*dst = '\0';
 	return len;

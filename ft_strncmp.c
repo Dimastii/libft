@@ -6,11 +6,12 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:20:17 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/30 12:02:14 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/10/30 18:21:09 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char *ptr1;
@@ -20,10 +21,11 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	ptr1 =(unsigned char *)s1;
 	ptr2 =(unsigned char *)s2;
 	i = 0;
-	while(ptr1[i] && ptr2[i] && i < n)
+
+	while((ptr1[i] || ptr2[i]) && i < n)
 	{
-		if(ptr1[i]!= ptr2[i]) {
-			return (ptr1[i] - ptr2[i]); }
+		if(ptr1[i]!= ptr2[i])
+			return (ptr1[i] - ptr2[i]);
 		i++;
 	}
 	return 0;

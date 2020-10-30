@@ -6,29 +6,25 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 20:53:05 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/28 21:02:24 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/10/30 14:10:51 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <string.h>
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char 	*d;
-	unsigned char	*s;
-	char f;
+    unsigned char    sym;
+    unsigned char    *d;
+    unsigned char    *s;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	f = (unsigned char)c;
-
-	while (n) {
-		if(f == *s)
-			return NULL;
-		*d = *s;
-		d++;
-		s++;
-		n--;
-	}
-
-	return dst;
+    sym = (unsigned char)c;
+    d = (unsigned char *)dst;
+    s = (unsigned char *)src;
+    while (n--)
+    {
+        *d++ = *s++;
+        if (*(d - 1) == sym)
+            return (d);
+    }
+    return (NULL);
 }
