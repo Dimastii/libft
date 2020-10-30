@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/30 20:40:42 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/30 21:43:33 by cveeta           ###   ########.fr       */
+/*   Created: 2020/10/30 21:53:54 by cveeta            #+#    #+#             */
+/*   Updated: 2020/10/30 22:11:53 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char *str;
-	char *strr;
-	size_t len;
 
-	if (!s1 && !s2)
-		return (NULL);
-	len = ft_strlen(s1) +ft_strlen(s2);
-	if((str = malloc(len)))
-		strr = str;
-	else
-		return NULL;
-	if (s1)
-		while(*s1)
-		*strr++ = *s1++;
-	if (s2)
-		while(*s2)
-		*strr++ = *s2++;
-	*strr = '\0';
-	return str;
 }
