@@ -1,33 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/29 15:08:11 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/31 13:08:39 by cveeta           ###   ########.fr       */
+/*   Created: 2020/11/03 12:12:04 by cveeta            #+#    #+#             */
+/*   Updated: 2020/11/03 12:46:05 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *string, int symbol)
+static void get_string(char **str,int n)
 {
-	char *str;
-	char sb;
-	unsigned int len;
-
-	len = ft_strlen(string);
-	sb = (char) symbol;
-	str = (char*) (string + len);
-	while (len != -1)
-	{
-		if (*str == sb)
-			return str;
-		str--;
-		len--;
-	}
-	return NULL;
+	n %= 10;
+	if (n > 10)
+		get_string(str,n);
+	if (n < 0)
+		str = '-'
 }
 
+char *ft_itoa(int n)
+{
+	char c;
+	int i;
+	int digit;
+	char *str;
+
+	digit = n;
+	i = 0;
+	while (n > 10)
+	{
+		n %= 10;
+		i++;
+	}
+	n = digit;
+	if(!(str = ft_calloc(i,sizeof(char))))
+		return NULL;
+
+	get_string(&str,n);
+	while (n > 10)
+	{
+		*str++ = (n / 10) - '0';
+		n %= 10;
+		ft_itoa(n);
+	}
+	return str;
+}

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
 int		ft_atoi(const char *str)
 {
@@ -26,9 +25,10 @@ int		ft_atoi(const char *str)
 	c = (unsigned char*)str;
 	while(*c == ' ' || *c == '\t' || *c == '\n'|| *c == '\v'|| *c == '\f'|| *c == '\r')
 	    c++;
-	if(*c == '-')
+	if((*c == '-') || (*c == '+'))
 	{
-		sign *= -1;
+		if(*c == '-')
+			sign *= -1;
 		c++;
 	}
 	while (ft_isdigit(*c))

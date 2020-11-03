@@ -6,11 +6,24 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 14:38:20 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/30 14:52:32 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/01 18:33:16 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strdup(const char *s1)
-{
 
+#include "libft.h"
+#include <stdlib.h>
+
+char	*ft_strdup(const char *s)
+{
+	char* str;
+	char* strret;
+
+	if(!(str  = malloc(ft_strlen(s))))
+		return NULL;
+	strret = str;
+	while(*s)
+		*str++ = *s++;
+	*str = '\0';
+	return strret;
 }
