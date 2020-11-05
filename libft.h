@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNTITLED_LIBFT_H
+#ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
 

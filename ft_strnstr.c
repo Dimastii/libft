@@ -25,8 +25,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return (char *)big;
 	while (*biig && len--)
 	{
-		if (strlen(litle) <= len + 1)
-			if (!(ft_strncmp(biig, litle, strlen(litle))))
+		if (ft_strlen(litle) <= len + 1)
+			if (!(ft_strncmp(biig, litle, ft_strlen(litle))))
 				return (biig);
 		biig++;
 	}
