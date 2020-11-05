@@ -11,10 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//while (len--)
-//	if (biig[i] != litle[i])
-//		return (0);
-//	return (1);
+
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	char			*biig;

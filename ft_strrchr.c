@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *string, int symbol)
 {
 	char			*str;
 	char			sb;
-	int	len;
+	int				len;
 
 	len = ft_strlen(string);
 	sb = (char)symbol;

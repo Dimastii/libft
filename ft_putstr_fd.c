@@ -6,13 +6,12 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:20:54 by cveeta            #+#    #+#             */
-/*   Updated: 2020/11/04 13:25:46 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/05 19:03:54 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 #include "libft.h"
-
 
 void	ft_putstr_fd(char *s, int fd)
 {

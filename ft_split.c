@@ -5,34 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/01 19:13:04 by cveeta            #+#    #+#             */
-/*   Updated: 2020/11/03 21:29:26 by cveeta           ###   ########.fr       */
+/*   Created: 2020/11/05 19:01:22 by cveeta            #+#    #+#             */
+/*   Updated: 2020/11/05 19:01:52 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
+#include "stdlib.h"
 
-static size_t		count_of_words(char const *s, char c)
-{
-	size_t words;
-
-	words = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		if (*s)
-		{
-			words++;
-			while (*s && *s != c)
-				s++;
-		}
-	}
-	return (words);
-}
-
-static void			free_words(char **words, size_t i)
+static void			free_tabs(char **words, size_t i)
 {
 	while (i--)
 		if (&(words[i]) && *&(words[i]))
@@ -43,55 +24,58 @@ static void			free_words(char **words, size_t i)
 	free(*words);
 }
 
-static char			*get_word(char *word, char c)
+static int			lines(char const *s, char c)
 {
-	char *start;
+	int	i;
+	int	j;
 
-	start = word;
-	while (*word && *word != c)
-		word++;
-	*word = '\0';
-	return (ft_strdup(start));
+	j = 0;
+	i = -1;
+	while (s[++i])
+		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
+			j++;
+	return (j);
 }
 
-static char			**get_words(char *s, char c, size_t w_c)
+static int			tabs(char **ar, char *t, char c)
 {
-	char	**words;
-	char	*w;
-	size_t	i;
+	int		i;
+	int		j;
 
-	i = 0;
-	if ((words = (char **)ft_calloc(sizeof(char *) * (w_c + 1), sizeof(char*))))
+	j = 0;
+	while (*t)
 	{
-		while (i < w_c)
+		i = 0;
+		while (*(t + i) != c && *(t + i))
+			++i;
+		if (i > 0)
 		{
-			while (*s == c)
-				s++;
-			if (*s)
+			if (!(ar[j++] = ft_substr(t, 0, i)))
 			{
-				if (!(w = get_word(s, c)))
-				{
-					free_words(words, i);
-					return (NULL);
-				}
-				words[i++] = w;
-				s += (ft_strlen(w) + 1);
+				free_tabs(ar, j);
+				return (0);
 			}
+			t = t + i - 1;
 		}
-		words[i] = NULL;
+		t++;
 	}
-	return (words);
+	return (0);
 }
 
-char				**ft_split(const char *s, char c)
+char				**ft_split(char const *s, char c)
 {
-	char	**words;
-	char	*line;
+	char	**ar;
+	char	*t;
+	int		j;
 
 	if (!s)
 		return (NULL);
-	line = ft_strdup((char *)s);
-	words = get_words(line, c, count_of_words(line, c));
-	free(line);
-	return (words);
+	j = lines(s, c);
+	t = (char *)s;
+	ar = (char**)malloc((j + 1) * sizeof(char*));
+	if (!ar)
+		return (NULL);
+	ar[j] = NULL;
+	tabs(ar, t, c);
+	return (ar);
 }
