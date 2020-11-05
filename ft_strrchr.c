@@ -14,20 +14,19 @@
 
 char	*ft_strrchr(const char *string, int symbol)
 {
-	char *str;
-	char sb;
-	unsigned int len;
+	char			*str;
+	char			sb;
+	int	len;
 
 	len = ft_strlen(string);
-	sb = (char) symbol;
-	str = (char*) (string + len);
-	while (len != -1)
+	sb = (char)symbol;
+	str = (char*)(string + len);
+	while (len != (-1))
 	{
 		if (*str == sb)
-			return str;
+			return (str);
 		str--;
 		len--;
 	}
-	return NULL;
+	return (NULL);
 }
-

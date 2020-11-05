@@ -6,7 +6,7 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 15:03:43 by cveeta            #+#    #+#             */
-/*   Updated: 2020/11/03 10:15:26 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/04 18:08:43 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,34 +134,13 @@ int main() {
 
 	printf("\n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
-	char *largestring = "Foo Bar Baz";
-	char *smallstring = "Bar\0";
+	char *largestring = "lorem ipsum dolor sit amet";
+	char *smallstring = "dolo";
 
-	printf("\n    strnstr %s\n",strnstr(largestring, smallstring, 1));
-	printf("\n ft_strnstr %s", ft_strnstr(largestring, smallstring, 1));
+	printf("\n    strnstr %s\n",strnstr(largestring, smallstring, 15));
+	printf("\n ft_strnstr %s", ft_strnstr(largestring, smallstring, 15));
 
+	//ft_putnbr_fd(-5, 2);
 
-	printf("\n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n");
-
-
-	printf( "\nft_substr %s 11///////////\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ft_substr("12345", 3, 1));
-
-
-
-
-	char *strr = ft_strdup("lorem ipsum dolor sit amet");
-
-	printf("\nft_strdup %s\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", strr);
-
-
-	//char **zxc = ft_split("    ",' ');
-	char **zxc = ft_split(" lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse",' ');
-	int h;
-	printf("\n");
-
-	for(h = 0; h < 12; h++)
-	{
-		printf("%s|\n", zxc[h]);
-	}
 	return 0;
 }

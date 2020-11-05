@@ -6,14 +6,14 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 19:13:04 by cveeta            #+#    #+#             */
-/*   Updated: 2020/11/03 12:08:03 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/03 21:29:26 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t    count_of_words(char const *s, char c)
+static size_t		count_of_words(char const *s, char c)
 {
 	size_t words;
 
@@ -32,18 +32,7 @@ static size_t    count_of_words(char const *s, char c)
 	return (words);
 }
 
-
-
-void	ft_strdel(char **as)
-{
-	if (as && *as)
-	{
-		free(*as);
-		*as = NULL;
-	}
-}
-
-static void        free_words(char **words, size_t i)
+static void			free_words(char **words, size_t i)
 {
 	while (i--)
 		if (&(words[i]) && *&(words[i]))
@@ -54,7 +43,7 @@ static void        free_words(char **words, size_t i)
 	free(*words);
 }
 
-static char        *get_word(char *word, char c)
+static char			*get_word(char *word, char c)
 {
 	char *start;
 
@@ -65,28 +54,28 @@ static char        *get_word(char *word, char c)
 	return (ft_strdup(start));
 }
 
-static char        **get_words(char *s, char c, size_t words_count)
+static char			**get_words(char *s, char c, size_t w_c)
 {
-	char    **words;
-	char    *word;
-	size_t    i;
+	char	**words;
+	char	*w;
+	size_t	i;
 
 	i = 0;
-	if ((words = (char **)ft_calloc(sizeof(char *) * (words_count + 1),sizeof(char*))))
+	if ((words = (char **)ft_calloc(sizeof(char *) * (w_c + 1), sizeof(char*))))
 	{
-		while (i < words_count)
+		while (i < w_c)
 		{
 			while (*s == c)
 				s++;
 			if (*s)
 			{
-				if (!(word = get_word(s, c)))
+				if (!(w = get_word(s, c)))
 				{
 					free_words(words, i);
 					return (NULL);
 				}
-				words[i++] = word;
-				s += (ft_strlen(word) + 1);
+				words[i++] = w;
+				s += (ft_strlen(w) + 1);
 			}
 		}
 		words[i] = NULL;
@@ -94,10 +83,10 @@ static char        **get_words(char *s, char c, size_t words_count)
 	return (words);
 }
 
-char            **ft_split(const char *s, char c)
+char				**ft_split(const char *s, char c)
 {
-	char    **words;
-	char    *line;
+	char	**words;
+	char	*line;
 
 	if (!s)
 		return (NULL);

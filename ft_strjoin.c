@@ -6,7 +6,7 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 20:40:42 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/30 21:43:33 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/04 18:57:23 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,20 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
-	char *strr;
-	size_t len;
+	char	*str;
+	char	*strr;
+	size_t	len;
 
-	if (!s1 && !s2)
+	if (!s1 || !s2)
 		return (NULL);
-	len = ft_strlen(s1) +ft_strlen(s2);
-	if((str = malloc(len)))
-		strr = str;
-	else
-		return NULL;
-	if (s1)
-		while(*s1)
-		*strr++ = *s1++;
-	if (s2)
-		while(*s2)
-		*strr++ = *s2++;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(str = malloc(len + 1)))
+		return (NULL);
+	strr = str;
+	while (*s1)
+			*strr++ = *s1++;
+	while (*s2)
+			*strr++ = *s2++;
 	*strr = '\0';
-	return str;
+	return (str);
 }

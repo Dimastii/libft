@@ -6,45 +6,37 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:12:04 by cveeta            #+#    #+#             */
-/*   Updated: 2020/11/03 12:46:05 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/03 21:11:11 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdlib.h"
 
-static void get_string(char **str,int n)
+char	*ft_itoa(int n)
 {
-	n %= 10;
-	if (n > 10)
-		get_string(str,n);
-	if (n < 0)
-		str = '-'
-}
+	int		temp;
+	int		size;
+	int		sign;
+	char	*str;
 
-char *ft_itoa(int n)
-{
-	char c;
-	int i;
-	int digit;
-	char *str;
-
-	digit = n;
-	i = 0;
-	while (n > 10)
+	temp = n;
+	size = 1;
+	sign = n < 0;
+	while (temp /= 10)
+		size++;
+	if (!(str = malloc(sizeof(char) * (size + 1 + sign))))
+		return (NULL);
+	if (sign)
+		*str++ = '-';
+	str += size;
+	*str-- = '\0';
+	if (n == 0)
+		*str-- = '0';
+	while (n)
 	{
-		n %= 10;
-		i++;
+		*str-- = (n % 10) * (sign ? -1 : 1) + '0';
+		n /= 10;
 	}
-	n = digit;
-	if(!(str = ft_calloc(i,sizeof(char))))
-		return NULL;
-
-	get_string(&str,n);
-	while (n > 10)
-	{
-		*str++ = (n / 10) - '0';
-		n %= 10;
-		ft_itoa(n);
-	}
-	return str;
+	return (str + 1 - sign);
 }

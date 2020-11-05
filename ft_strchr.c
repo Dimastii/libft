@@ -17,13 +17,13 @@ char	*ft_strchr(const char *string, int symbol)
 	char *str;
 	char sb;
 
-	sb = (char) symbol;
-	str = (char*) string;
+	sb = (char)symbol;
+	str = (char*)string;
 	while (*str)
 	{
 		if (*str == sb)
-			return str;
+			return (str);
 		str++;
 	}
-	return ((*str == sb)? str : NULL);
+	return ((*str == sb) ? str : NULL);
 }

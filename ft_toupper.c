@@ -6,11 +6,13 @@
 /*   By: cveeta <cveeta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 16:46:34 by cveeta            #+#    #+#             */
-/*   Updated: 2020/10/29 16:51:26 by cveeta           ###   ########.fr       */
+/*   Updated: 2020/11/03 21:49:27 by cveeta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_toupper(int c)
 {
-	return (c-32);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
 }
