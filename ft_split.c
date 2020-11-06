@@ -21,7 +21,7 @@ static void			free_tabs(char **words, size_t i)
 			free(*&(words[i]));
 			*&(words[i]) = NULL;
 		}
-	free(*words);
+	free(words);
 }
 
 static int			lines(char const *s, char c)

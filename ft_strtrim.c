@@ -13,7 +13,30 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strtrim(char const *s1, char const *set)
+static const char		*seek_first(char const *s1, char const *set)
+{
+	const char		*first;
+
+	first = s1;
+	while (ft_strchr(set, *s1) && *s1++)
+		first = s1;
+	return (first);
+}
+
+static const char		*seek_last(char const *s1, char const *set)
+{
+	const char		*last;
+	const char		*chel_ti;
+
+	chel_ti = s1;
+	last = s1 + ft_strlen(s1);
+	s1 = last - 1;
+	while (ft_strchr(set, *s1) && *s1-- && chel_ti != s1)
+		last = s1;
+	return (last);
+}
+
+char					*ft_strtrim(char const *s1, char const *set)
 {
 	char			*str;
 	char			*strret;
@@ -24,13 +47,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	if (ft_strlen(set) == 0)
 		return ((char*)s1);
-	last = s1 + ft_strlen(s1);
-	first = s1;
-	while (ft_strchr(set, *s1) && *s1++)
-		first = s1;
-	s1 = last - 1;
-	while (ft_strchr(set, *s1) && *s1--)
-		last = s1;
+	first = seek_first(s1, set);
+	last = seek_last(s1, set);
 	if (first > last)
 		return (ft_strdup(""));
 	if (!(str = malloc(last - first + 2)))
